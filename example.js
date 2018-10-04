@@ -7,3 +7,9 @@ const jwt = `${encodedHeader}.${encodedPayload}.${signature}`;
 
 
 
+res.cookie('_token', JSON.stringify(jwt), {
+  secure: true,
+  httpOnly: true, 
+  sameSite: 'strict',
+  maxAge: expiresIn}
+).send({Message: 'Authenticated...'});
